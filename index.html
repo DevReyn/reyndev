@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyn Dev Premium Arayüzü</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #FF6347, #FFD700); /* Yumuşak renk geçişi */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+            animation: backgroundAnimation 8s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(45deg, #FF6347, #FFD700); /* Turuncu ve sarı */
+            }
+            50% {
+                background: linear-gradient(45deg, #1E90FF, #32CD32); /* Mavi ve yeşil */
+            }
+            100% {
+                background: linear-gradient(45deg, #8A2BE2, #FF4500); /* Mor ve kırmızı */
+            }
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: textPop 1s ease-out forwards, textGlow 2s infinite alternate;
+        }
+
+        @keyframes textPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.6);
+            }
+            100% {
+                text-shadow: 0 0 60px rgba(255, 215, 0, 0.9), 0 0 80px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        .start-btn {
+            padding: 20px 60px;
+            font-size: 24px;
+            background: #FF4500;
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 30px;
+            animation: btnPop 1s ease-out forwards;
+        }
+
+        @keyframes btnPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+            background: #FF6347;
+        }
+
+        .buttons-container {
+            display: none;
+            margin-top: 50px;
+        }
+
+        .dynamic-btn {
+            background: transparent;
+            border: 2px solid #FFD700;
+            padding: 18px 40px;
+            font-size: 22px;
+            color: #FFD700;
+            border-radius: 50px;
+            margin: 15px;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dynamic-btn:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .dynamic-btn:nth-child(1) {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .dynamic-btn:nth-child(2) {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        .dynamic-btn:nth-child(3) {
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-container {
+            display: none;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.6s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-text {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .slide-btn {
+            padding: 15px 35px;
+            font-size: 18px;
+            background: #FF6347;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-btn:hover {
+            transform: translateY(-4px);
+            background: #FF4500;
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+                margin-bottom: 30px;
+            }
+
+            .start-btn {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
+
+            .dynamic-btn {
+                padding: 14px 30px;
+                font-size: 20px;
+            }
+
+            .slide-container {
+                margin-top: 20px;
+                padding: 30px;
+            }
+
+            .slide-text {
+                font-size: 18px;
+            }
+
+            .slide-btn {
+                padding: 12px 28px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .start-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .dynamic-btn {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+
+            .slide-container {
+                margin-top: 15px;
+                padding: 25px;
+            }
+
+            .slide-text {
+                font-size: 16px;
+            }
+
+            .slide-btn {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>REYN DEV</h1>
+        <button class="start-btn" id="startBtn">Başla</button>
+
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="dynamic-btn" id="btn1">Çekilişten Yararlan</button>
+            <button class="dynamic-btn" id="btn2">Huge Satın al</button>
+            <button class="dynamic-btn" id="btn3">Pet sat</button>
+        </div>
+
+        <!-- Kayma alanları için 3 farklı container -->
+        <div id="slide1" class="slide-container">
+            <div class="slide-text">Çekiliiş için zorunlu olan görevler</div>
+            <a href="https://www.youtube.com/@ydteamolart">   <button class="slide-btn">Youtube kanalıma bak</button>   </a>                                 <a href=""></a>
+        </div>
+        <div id="slide2" class="slide-container">
+            <div class="slide-text">Huge satın almak için discordumuz</div>
+            <a href="">       <button class="slide-btn">Huge satın almak için tıkla (yakında)</button></a>
+        </div>
+        <div id="slide3" class="slide-container">
+            <div class="slide-text">Petlerinizi satmak için discordumuz</div>
+            <a href="">  <button class="slide-btn">Petlerinizi satmak için tıkla (yakında)</button></a>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const buttonsContainer = document.getElementById("buttonsContainer");
+
+        // Butonlar ve kayma alanları
+        const slide1 = document.getElementById("slide1");
+        const slide2 = document.getElementById("slide2");
+        const slide3 = document.getElementById("slide3");
+
+        // Butonlara tıklandığında kayma alanlarını göster
+        document.getElementById("btn1").addEventListener("click", () => {
+            slide1.style.display = "block";
+        });
+        document.getElementById("btn2").addEventListener("click", () => {
+            slide2.style.display = "block";
+        });
+        document.getElementById("btn3").addEventListener("click", () => {
+            slide3.style.display = "block";
+        });
+
+        // Başla butonuna tıklandığında diğer butonları göster
+        startBtn.addEventListener("click", function() {
+            buttonsContainer.style.display = "block";
+        });
+    </script>
+</body>
+</html>
